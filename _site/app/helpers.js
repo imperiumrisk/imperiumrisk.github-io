@@ -1,3 +1,49 @@
+const factorsToProportions = (factors) => {
+	output = [];
+	// First we calculate inherent risk
+	ir_severity = 0;
+	weightings.severity.forEach( row => {
+		if(row.label == "Background Risk") {
+			ir_severity += row.weight
+		} else {
+			factor = factors.find( elem => elem.label==row.label )
+			if(factor && !factor.is_control) {
+				ir_severity += row.weight * factor.val;
+			}
+		}
+	});
+	// Next residual risk
+	// We actuall do the ratings based on their maximum
+	rr_severity = ir_severity
+	weightings.severity.forEach( row => {
+		// We don't worry about background risk as it won't be an input factor
+		factor = factors.find( elem => elem.label == row.label );
+		if(factor && factor.is_control) {
+			rr_severity += row.weight * factor.val;
+		}
+	})
+	// Now the IRF weightings
+	weightings.severity.forEach( row => {
+		if(row.label == "Background Risk") {
+			output.push({label: "Background Risk", proportion:  (row.weight/ir_severity)*100.0, is_control: false});
+		} else {
+			factor = factors.find( elem => elem.label==row.label );
+			if(factor && !factor.is_control) {
+				output.push({label: row.label, proportion: ((factor.val*row.weight)/ir_severity)*100.0, is_control: false});
+			}
+		}
+	});
+	// Now the control weightings
+	weightings.severity.forEach( row => {
+		// We don't worry about background risk as it won't be an input factor
+		factor = factors.find( elem => elem.label==row.label );
+		if(factor && factor.is_control) {
+			output.push({label: row.label, proportion: ((factor.val*row.weight)/(ir_severity-rr_severity))*100.0, is_control: true});
+		}
+	});
+	return output;
+}
+
 const getSeverity = (inputs) => {
 	severity = 0;
 	weightings.severity.forEach( row => {

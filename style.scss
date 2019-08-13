@@ -204,7 +204,11 @@ body {
 	}
 }
 
-.prop_ratings_area { grid-area: prop_ratings_area; }
+.prop_ratings_area {
+	grid-area: prop_ratings_area; 
+	display:grid;
+	grid-template-columns: 1fr 2fr 4fr;
+}
 
 .dropdown-group {
 	width:100%;
