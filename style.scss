@@ -1,0 +1,210 @@
+---
+---
+
+:root {
+	--imperium-back-dark: #2f3242;
+	--imperium-back-light: #3d4257;
+	--imperium-accent: #2381cb;
+	--imperium-fore: white;
+	--imperium-dark-grey: #555;
+	--imperium-light-grey: #ddd;
+}
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	background-color: var(--imperium-back-dark);
+	color: var(--imperium-fore);
+	font-family: Arial, sans-serif;
+}
+
+body {
+	width: 80vw;
+	margin-left: 10vw;
+}
+
+.global_container {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.main_grid {
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+	grid-template-rows: 300px 1fr;
+	grid-template-areas: "placement_area period_controls" "prop_ratings_area whatif_controls";
+}
+
+.placement_area {
+	grid-area: placement_area; 
+	display:grid;
+	grid-gap: 10px;
+	grid-template-columns: 1fr 3fr;
+	grid-template-areas: "riskbu_selector rating_grid"
+}
+
+.riskbu_selector{
+	grid-area: riskbu_selector;
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:stretch;
+	padding: 10px;
+
+	form {
+		margin-top: 10px;
+	}
+}
+
+.rating_grid {
+	grid-area: rating_grid;
+	margin: 10px;
+	background-color: var(--imperium-back-light);
+	border: 1px solid var(--imperium-accent);
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+	grid-gap:5px;
+	padding: 10px;
+	.rating_square {
+		background-color: var(--imperium-back-dark);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&.grid_green{
+			border-bottom: 2px solid green;
+		}
+		&.grid_orange{
+			border-bottom: 2px solid orange;
+		}
+		&.grid_red{
+			border-bottom: 2px solid red;
+		}
+		div {
+			padding: 5px;
+			border-radius: 3px;
+			&#rr_square{
+				background-color: var(--imperium-accent);
+			}
+		}
+	}
+	.rating_title{
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+}
+
+.period_controls {
+	grid-area: period_controls; 
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:stretch;
+	padding: 10px;
+}
+
+
+.whatif_controls {
+	grid-area: whatif_controls; 
+	display: flex;
+	flex-direction: column;
+
+	form#whatif_factor_form {
+		margin-bottom: 10px;
+	}
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+// This has come fromhttps://www.w3schools.com/howto/howto_js_rangeslider.asp
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 10px; /* Specified height */
+  background: var(--imperium-dark-grey); /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  background: var(--imperium-accent); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  background: var(--imperium-accent); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider-group {
+	width:100%;
+	display: flex;
+	flex-wrap: wrap;
+	label {
+		display: block;
+		width: 70%;
+		float: left;
+	}
+	.slider-value{
+		display: block;
+		width: 30%;
+		float: right;
+		text-align: right;
+		font-size:0.75em;
+		color: var(--imperium-light-grey);
+		padding-top: 4px;
+	}
+}
+
+.prop_ratings_area { grid-area: prop_ratings_area; }
+
+.dropdown-group {
+	width:100%;
+	display: block;
+	label {
+		display: block;
+		width: 100%
+	}
+	select {
+		display: block;
+		width: 100%;
+		background-color: var(--imperium-light-grey);
+		border: 1px solid white;
+		&:hover{
+			border:1px solid var(--imperium-accent);
+		}
+	}
+}
+
+
+.form-background {
+	background-color: var(--imperium-back-light);
+	border: 1px solid var(--imperium-accent);
+	padding:5px;
+}
+
+form h4 {
+	margin: 10px 0;
+}
