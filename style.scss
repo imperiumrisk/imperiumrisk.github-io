@@ -24,6 +24,20 @@ body {
 	margin-left: 10vw;
 }
 
+@media only screen and (max-width: 1080px) {
+  body {
+	  width: 90vw;
+	  margin-left: 5vw;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+	  width: 98vw;
+	  margin-left: 1vw;
+  }
+}
+
 .global_container {
 	width: 100%;
 	height: 100%;
@@ -71,7 +85,7 @@ body {
 	.rating_square {
 		background-color: var(--imperium-back-dark);
 		display: flex;
-		justify-content: center;
+		justify-content: space-around;
 		align-items: center;
 		&.grid_green{
 			border-bottom: 2px solid green;
@@ -82,11 +96,23 @@ body {
 		&.grid_red{
 			border-bottom: 2px solid red;
 		}
-		div {
+		.rating_placement {
 			padding: 5px;
 			border-radius: 3px;
-			&#rr_square{
+			&.whatif_square{
 				background-color: var(--imperium-accent);
+			}
+			&.current_square{
+				background-color: var(--imperium-dark-grey);
+			}
+			&.last_month_square{
+				background-color: red;
+			}
+			&.last_year_square{
+				background-color: green;
+			}
+			&.predicted_square{
+				background-color: black;
 			}
 		}
 	}

@@ -50,31 +50,31 @@
 					</div>
 				</div>
 				<div class="period_controls">
-					<form id="period_form">
-						<div class="form-background">
+					<div class="form-background">
+						<form id="period_form">
 							<h4>Period</h4>
 							<div class="check-group">
-								<input type="checkbox" name="current">
+								<input type="checkbox" name="current" id="current_checkbox" checked>
 								<label for="current">Current</label>
 							</div>
 							<div class="check-group">
-								<input type="checkbox" name="last_month">
+								<input type="checkbox" name="last_month" id="last_month_checkbox">
 								<label for="last_month">Last Month</label>
 							</div>
 							<div class="check-group">
-								<input type="checkbox" name="last_year">
+								<input type="checkbox" name="last_year" id="last_year_checkbox">
 								<label for="last_year">Last Year</label>
 							</div>
 							<div class="check-group">
-								<input type="checkbox" name="predicted">
+								<input type="checkbox" name="predicted" id="predicted_checkbox">
 								<label for="predicted">Predicted</label>
 							</div>
 							<div class="check-group">
-								<input type="checkbox" name="whatif">
-								<label for="predicted">What If</label>
+								<input type="checkbox" name="whatif" id="whatif_checkbox" checked>
+								<label for="whatif">What If</label>
 							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 				<div class="prop_ratings_area">
 					Proportional grid
@@ -96,5 +96,9 @@
 			</div>
 		</div>
 	</body>
-	<script src="app.js"></script>
+	<script src="app/data.js"></script>
+	<script src="app/helpers.js"></script>
+	<script src="app/get_factors.js"></script>
+	<script src="app/graphics.js"></script>
+	<script src="app/main.js"></script>
 </html>

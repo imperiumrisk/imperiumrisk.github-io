@@ -18,6 +18,14 @@ body {
   width: 80vw;
   margin-left: 10vw; }
 
+@media only screen and (max-width: 1080px) {
+  body {
+    width: 90vw;
+    margin-left: 5vw; } }
+@media only screen and (max-width: 800px) {
+  body {
+    width: 98vw;
+    margin-left: 1vw; } }
 .global_container {
   width: 100%;
   height: 100%;
@@ -59,7 +67,7 @@ body {
   .rating_grid .rating_square {
     background-color: var(--imperium-back-dark);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center; }
     .rating_grid .rating_square.grid_green {
       border-bottom: 2px solid green; }
@@ -67,11 +75,19 @@ body {
       border-bottom: 2px solid orange; }
     .rating_grid .rating_square.grid_red {
       border-bottom: 2px solid red; }
-    .rating_grid .rating_square div {
+    .rating_grid .rating_square .rating_placement {
       padding: 5px;
       border-radius: 3px; }
-      .rating_grid .rating_square div#rr_square {
+      .rating_grid .rating_square .rating_placement.whatif_square {
         background-color: var(--imperium-accent); }
+      .rating_grid .rating_square .rating_placement.current_square {
+        background-color: var(--imperium-dark-grey); }
+      .rating_grid .rating_square .rating_placement.last_month_square {
+        background-color: red; }
+      .rating_grid .rating_square .rating_placement.last_year_square {
+        background-color: green; }
+      .rating_grid .rating_square .rating_placement.predicted_square {
+        background-color: black; }
   .rating_grid .rating_title {
     display: flex;
     justify-content: center;

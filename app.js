@@ -1,5 +1,3 @@
-// Modified from https://www.w3schools.com/howto/howto_js_rangeslider.asp
-
 irfList = [
 	{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 1000000, max: 2000000, step: 1000, init: 1500000, current: 1500000},
 	{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0, max: 1, step: 0.1, init: 0.5, current: 0.5},
@@ -137,14 +135,20 @@ controlList.forEach( row => {
 });
 
 
-const getCurrentFactors = () => {
+const getCurrentFactors = (get_controls) => {
 	returnList = [];
 	irfList.forEach( row => {
 		returnList.push({label: row.label, val : parseFloat(row.current)});
 	});
-	controlList.forEach( row => {
-		returnList.push({label: row.label, val: parseFloat(row.current)});
-	});
+	if(get_controls){
+		controlList.forEach( row => {
+			returnList.push({label: row.label, val: parseFloat(row.current)});
+		});
+	} else {
+		controlList.forEach( row => {
+			returnList.push({label: row.label, val: 0});
+		});
+	}
 	return returnList;
 }
 
@@ -207,10 +211,16 @@ const getLikelihood = (inputs) => {
 	return expec;
 }
 
-const updateView = () => {
-	factors = getCurrentFactors();
-	severity = getSeverity(factors);
-	likelihood = getLikelihood(factors);
+const addSquare = (placement, squareClass, squareID, text) => {
+	// First let's remove the old rating
+	oldSquare = document.getElementById(squareID);
+	if (oldSquare) {
+		oldSquare.parentNode.removeChild(oldSquare);
+	}
+	document.getElementById("rating_square_"+placement).innerHTML += `<div class='rating_placement ${squareClass}' id='${squareID}'>${text}</div>`
+}
+
+const severityLikelihoodToPlacement = (severity, likelihood) => {
 	if(severity < 200000) {
 		severityPlace = 0;
 	} else if (severity < 1000000) {
@@ -234,13 +244,20 @@ const updateView = () => {
 		likelihoodPlace = 4;
 	}
 	gridPlacement = 5*likelihoodPlace + severityPlace;
-	// First let's remove the old rating
-	oldSquare = document.getElementById("rr_square");
-	if(oldSquare){
-		oldSquare.parentNode.removeChild(oldSquare);
-	}
-	// We have the placement now we just need to add the actual square
-	document.getElementById("rating_square_"+gridPlacement).innerHTML = "<div id='rr_square'>RR</div>"
+	return gridPlacement;
+}
+
+const updateView = () => {
+	residualFactors = getCurrentFactors(true);
+	residualSeverity = getSeverity(residualFactors);
+	residualLikelihood = getLikelihood(residualFactors);
+	residualPlacement = severityLikelihoodToPlacement(residualSeverity, residualLikelihood);
+	addSquare(residualPlacement, 'rr_square', 'whatif_rr_square', 'RR');
+	inherentFactors = getCurrentFactors(false);
+	inherentSeverity = getSeverity(inherentFactors);
+	inherentLikelihood = getLikelihood(inherentFactors);
+	inherentPlacement = severityLikelihoodToPlacement(inherentSeverity, inherentLikelihood);
+	addSquare(inherentPlacement, 'ir_square', 'whatif_ir_square', 'IR');
 }
 
 // Finally update the view
