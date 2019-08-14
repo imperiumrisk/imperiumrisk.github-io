@@ -24,7 +24,7 @@ const showSquares = (periodName, factorFunction) => {
 	addSquare(inherentPlacement, `${periodName}_square`, `${periodName}_ir_square`, 'IR');
 }
 
-const showProportions = (factorFunction) => {
+const updateProportions = (factorFunction) => {
 	allFactors = factorFunction(true);
 	proportionList = factorsToProportions(allFactors);
 	irfPropHolder = document.getElementById("irf_proportions");
@@ -33,9 +33,22 @@ const showProportions = (factorFunction) => {
 	controlHTML = "";
 	proportionList.forEach( prop => {
 		if(prop.is_control){
-			controlHTML += `<div>${prop.label} ::: ${Math.round(prop.top_proportion)}/${Math.round(prop.bottom_proportion)}</div>`;
+			if(!prop.bottom_proportion==0){
+				controlHTML += `<div class="proportion_oblong">
+									<div class="proportion_label"><span>${prop.label}<span></div>
+									<div class="proportion_frac">
+										<div>${Math.round(prop.top_proportion)}</div>
+										<div>${Math.round(prop.bottom_proportion)}</div>
+									</div>
+								</div>`;
+			}
 		} else {
-			irfHTML += `<div>${prop.label} ::: ${Math.round(prop.proportion)}</div>`;
+			if(!prop.proportion==0) {
+				irfHTML += `<div class="proportion_oblong">
+								<div class="proportion_label"><span>${prop.label}</span></div>
+								<div class="proportion_int">${Math.round(prop.proportion)}</div>
+							</div>`;
+			}
 		}
 	})
 	irfPropHolder.innerHTML = irfHTML;
@@ -46,7 +59,7 @@ const updateView = () => {
 	removeOldSquares();
 	if(document.getElementById("whatif_checkbox").checked) {
 		showSquares('whatif', getWhatIfFactors);
-		showProportions(getWhatIfFactors);
+		updateProportions(getWhatIfFactors);
 	}
 	if(document.getElementById("current_checkbox").checked) {
 		showSquares('current', getCurrentFactors);

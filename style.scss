@@ -26,13 +26,6 @@ body {
 
 @media only screen and (max-width: 1080px) {
   body {
-	  width: 90vw;
-	  margin-left: 5vw;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  body {
 	  width: 98vw;
 	  margin-left: 1vw;
   }
@@ -208,6 +201,53 @@ body {
 	grid-area: prop_ratings_area; 
 	display:grid;
 	grid-template-columns: 1fr 2fr 4fr;
+	.irf_proportions, .control_proportions {
+		.proportion_oblong{
+			background-color: var(--imperium-back-light);
+			display: block;
+			float: left;
+			height: 50px;
+		}
+	}
+	.irf_proportions {
+		.proportion_oblong{ 
+			width:46%;
+			margin: 2%;
+		}
+	}
+	.control_proportions {
+		.proportion_oblong{
+			width: 23%;
+			margin: 1%;
+		}
+	}
+}
+
+.proportion_label{
+	display: flex;
+	float: left;
+	height: 100%;
+	width:80%;
+	align-items: center;
+	justify-content: center;
+	span{
+		text-align: center;
+	}
+}
+.proportion_int, .proportion_frac{
+	display: flex;
+	float: left;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 20%;
+}
+
+.proportion_frac {
+	flex-direction: column;
+	div:first-child{
+		border-bottom: 1px solid white;
+	}
 }
 
 .dropdown-group {
