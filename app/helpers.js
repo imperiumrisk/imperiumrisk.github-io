@@ -17,9 +17,9 @@ const factorsToProportions = (factors) => {
 	rr_severity = ir_severity
 	weightings.severity.forEach( row => {
 		// We don't worry about background risk as it won't be an input factor
-		factor = factors.find( elem => elem.label == row.label );
-		if(factor && factor.is_control) {
-			rr_severity += row.weight * factor.val;
+		factor = controlList.find( elem => elem.label == row.label );
+		if(factor) {
+			rr_severity += row.weight * factor.max;
 		}
 	})
 	// Now the IRF weightings
@@ -36,9 +36,16 @@ const factorsToProportions = (factors) => {
 	// Now the control weightings
 	weightings.severity.forEach( row => {
 		// We don't worry about background risk as it won't be an input factor
-		factor = factors.find( elem => elem.label==row.label );
-		if(factor && factor.is_control) {
-			output.push({label: row.label, proportion: ((factor.val*row.weight)/(ir_severity-rr_severity))*100.0, is_control: true});
+		factor = controlList.find( elem => elem.label==row.label );
+		factorInList = factors.find(elem => elem.label==row.label );
+		if(factor && factorInList) {
+			bottomProp = ((factor.max*row.weight)/(rr_severity-ir_severity));
+			if(bottomProp == 0) {
+				topProp = 0
+			} else {
+				topProp = (factorInList.val / factor.max)*bottomProp;
+			}
+			output.push({label: row.label, top_proportion: topProp*100.0, bottom_proportion: bottomProp*100.0, is_control: true});
 		}
 	});
 	return output;

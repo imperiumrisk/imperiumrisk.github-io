@@ -33,7 +33,7 @@ const showProportions = (factorFunction) => {
 	controlHTML = "";
 	proportionList.forEach( prop => {
 		if(prop.is_control){
-			controlHTML += `<div>${prop.label} ::: ${Math.round(prop.proportion)}</div>`;
+			controlHTML += `<div>${prop.label} ::: ${Math.round(prop.top_proportion)}/${Math.round(prop.bottom_proportion)}</div>`;
 		} else {
 			irfHTML += `<div>${prop.label} ::: ${Math.round(prop.proportion)}</div>`;
 		}
