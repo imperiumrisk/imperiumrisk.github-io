@@ -17,3 +17,19 @@ const getRiskList = () => {
 const getBuList = () => {
 	return buList;
 }
+
+const setIrfValue = (label, value) => {
+	irfList.forEach( row => {
+		if(row.label == label) {
+			row.current = value;
+		}
+	});
+}
+
+const setControlValue = (label, value) => {
+	controlList.forEach( row => {
+		if(row.label == label) {
+			row.current = value;
+		}
+	});
+}

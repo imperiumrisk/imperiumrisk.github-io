@@ -1,8 +1,9 @@
 const factorsToProportions = (factors) => {
 	output = [];
 	// First we calculate inherent risk
+	weight_data = getWeightingData(SELECTED_RISK, SELECTED_BU);
 	ir_severity = 0;
-	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
+	weight_data.severity.forEach( row => {
 		if(row.label == "Background Risk") {
 			ir_severity += row.weight
 		} else {
@@ -15,7 +16,7 @@ const factorsToProportions = (factors) => {
 	// Next residual risk
 	// We actuall do the ratings based on their maximum
 	rr_severity = ir_severity
-	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
+	weight_data.severity.forEach( row => {
 		// We don't worry about background risk as it won't be an input factor
 		factor = getControlData(SELECTED_RISK,SELECTED_BU).find( elem => elem.label == row.label );
 		if(factor) {
@@ -23,7 +24,7 @@ const factorsToProportions = (factors) => {
 		}
 	})
 	// Now the IRF weightings
-	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
+	weight_data.severity.forEach( row => {
 		if(row.label == "Background Risk") {
 			output.push({label: "Background Risk", proportion:  (row.weight/ir_severity)*100.0, is_control: false});
 		} else {
@@ -34,7 +35,7 @@ const factorsToProportions = (factors) => {
 		}
 	});
 	// Now the control weightings
-	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
+	weight_data.severity.forEach( row => {
 		// We don't worry about background risk as it won't be an input factor
 		factor = getControlData(SELECTED_RISK,SELECTED_BU).find( elem => elem.label==row.label );
 		factorInList = factors.find(elem => elem.label==row.label );
@@ -140,8 +141,13 @@ const severityLikelihoodToPlacement = (severity, likelihood) => {
 const resetIrfValues = () => {
 	getIRFData(SELECTED_RISK, SELECTED_BU).forEach( factor => {
 		slider = document.getElementById(factor.slider_id);
+		output = document.getElementById(factor.output_id);
+		// Update slider
 		slider.value = factor.init;
-		factor.current = factor.init;
+		// Update data source 
+		setIrfValue(factor.label, factor.init);
+		// Update slider output
+		output.innerHTML = parseFloat(factor.init).toLocaleString();
 	})
 	updateView();
 	// Don't refresh the page
@@ -152,7 +158,7 @@ const resetControlValues = () => {
 	getControlData(SELECTED_RISK,SELECTED_BU).forEach( factor => {
 		checkbox = document.getElementById(factor.checkbox_id);
 		checkbox.checked = false;
-		factor.current = factor.init;
+		setControlValue(factor.label, factor.init);
 	})
 	updateView();
 	// Don't refresh the page

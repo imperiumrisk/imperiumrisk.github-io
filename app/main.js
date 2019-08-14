@@ -68,7 +68,7 @@ getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 	// Update the current slider value (each time you drag the slider handle)
 	slider.oninput = () => {
 		output.innerHTML = parseFloat(slider.value).toLocaleString();
-		row.current = parseFloat(slider.value);
+		setIrfValue(row.label, parseFloat(slider.value));
 		updateView();
 	}
 });
@@ -90,9 +90,9 @@ getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 	var check = document.getElementById(row.checkbox_id);
 	check.addEventListener("change", () => {
 		if (check.checked) {
-			row.current = row.max;
+			setControlValue(row.label,row.max);
 		} else {
-			row.current = row.init;
+			setControlValue(row.label,row.init);
 		}
 		updateView();
 	});
