@@ -31,12 +31,27 @@ const updateProportions = (factorFunction) => {
 	controlPropHolder = document.getElementById("control_proportions");
 	irfHTML = "";
 	controlHTML = "";
+	// First we find the maximum rated IRF for colouring
+	max = 0
+	proportionList.forEach( prop => {
+		if (prop.proportion > max) {
+			max = prop.proportion;
+		}
+	});
 	proportionList.forEach( prop => {
 		if(prop.is_control){
 			if(!prop.bottom_proportion==0){
+				fraction = prop.top_proportion/prop.bottom_proportion;
+				if(fraction >= 0.9){
+					propColor = "prop_green";
+				} else if (fraction >= 0.5) {
+					propColor = "prop_amber";
+				} else {
+					propColor = "prop_red";
+				}
 				controlHTML += `<div class="proportion_oblong">
 									<div class="proportion_label"><span>${prop.label}<span></div>
-									<div class="proportion_frac">
+									<div class="proportion_frac ${propColor}">
 										<div>${Math.round(prop.top_proportion)}</div>
 										<div>${Math.round(prop.bottom_proportion)}</div>
 									</div>
@@ -44,9 +59,17 @@ const updateProportions = (factorFunction) => {
 			}
 		} else {
 			if(!prop.proportion==0) {
+				fraction = prop.proportion / max;
+				if(fraction >= 0.7){
+					propColor = "prop_red";
+				} else if (fraction >= 0.4) {
+					propColor = "prop_amber";
+				} else {
+					propColor = "prop_green";
+				}
 				irfHTML += `<div class="proportion_oblong">
 								<div class="proportion_label"><span>${prop.label}</span></div>
-								<div class="proportion_int">${Math.round(prop.proportion)}</div>
+								<div class="proportion_int ${propColor}">${Math.round(prop.proportion)}</div>
 							</div>`;
 			}
 		}

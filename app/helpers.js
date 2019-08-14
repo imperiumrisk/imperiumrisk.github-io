@@ -136,3 +136,25 @@ const severityLikelihoodToPlacement = (severity, likelihood) => {
 	gridPlacement = 5*likelihoodPlace + severityPlace;
 	return gridPlacement;
 }
+
+const resetIrfValues = () => {
+	irfList.forEach( factor => {
+		slider = document.getElementById(factor.slider_id);
+		slider.value = factor.init;
+		factor.current = factor.init;
+	})
+	updateView();
+	// Don't refresh the page
+	return false;
+}
+
+const resetControlValues = () => {
+	controlList.forEach( factor => {
+		checkbox = document.getElementById(factor.checkbox_id);
+		checkbox.checked = false;
+		factor.current = factor.init;
+	})
+	updateView();
+	// Don't refresh the page
+	return false;
+}

@@ -23,6 +23,9 @@ irfList.forEach( row => {
 						</div>
 					</div>`
 });
+// Now we add the reset button
+irfResetButton = "<div class='button_wrapper'><button id='irf_reset_button' onclick='resetIrfValues()' type='button'>Reset</button></div>";
+irfWhatIfHTML += irfResetButton;
 document.getElementById("whatif_factor_form_group").innerHTML += irfWhatIfHTML;
 
 // Add event listeners so that output of sliders updates
@@ -47,6 +50,8 @@ controlList.forEach( row => {
 								<label for='current'>${row.label}</label>
 						  </div>`
 });
+controlResetButton = "<div class='button_wrapper'><button id='control_reset_button' onclick='resetControlValues()' type='button'>Reset</button></div>";
+controlWhatIfHTML += controlResetButton;
 document.getElementById("whatif_control_form_group").innerHTML += controlWhatIfHTML;
 
 // Add event listeners for control fixes

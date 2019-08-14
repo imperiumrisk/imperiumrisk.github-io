@@ -1,10 +1,10 @@
 const irfList = [
 	{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 1000000, max: 2000000, step: 1000, init: 1500000, current: 1500000, last_month: 1000000, last_year: 750000, predicted: 1800000},
-	{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.6, last_year: 0.6, predicted: 0.5},
-	{label: "IT Complexity", slider_id: "itComplexitySlider", output_id: "itComplexityOutput", min: 0, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
-	{label: "F2B Complexity", slider_id: "f2bComplexitySlider", output_id: "f2bComplexityOutput", min: 0, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.2, last_year: 0.2, predicted: 0.8},
-	{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 1},
-	{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
+	{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
+	{label: "IT Complexity", slider_id: "itComplexitySlider", output_id: "itComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
+	{label: "F2B Complexity", slider_id: "f2bComplexitySlider", output_id: "f2bComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
+	{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
+	{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
 ];
 
 const controlList = [
