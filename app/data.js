@@ -1,3 +1,19 @@
+const riskList = [
+	{id: 1, title: "Risk 1"},
+	{id: 2, title: "Risk 2"},
+	{id: 3, title: "Risk 3"},
+	{id: 4, title: "Risk 4"},
+	{id: 5, title: "Risk 5"}
+]
+
+const buList = [
+	{id: 1, title: "Business Unit 1"},
+	{id: 2, title: "Business Unit 2"},
+	{id: 3, title: "Business Unit 3"},
+	{id: 4, title: "Business Unit 4"},
+	{id: 5, title: "Business Unit 5"}
+]
+
 const irfList = [
 	{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 750000, max: 2000000, step: 1000, init: 1500000, current: 1500000, last_month: 1000000, last_year: 750000, predicted: 1800000},
 	{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},

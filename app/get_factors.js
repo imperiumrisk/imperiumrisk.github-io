@@ -1,14 +1,14 @@
 const getWhatIfFactors = (get_controls) => {
 	returnList = [];
-	irfList.forEach( row => {
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 		returnList.push({label: row.label, val : parseFloat(row.current), is_control: false});
 	});
 	if(get_controls){
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: parseFloat(row.current), is_control: true});
 		});
 	} else {
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: 0, is_control: true});
 		});
 	}
@@ -17,15 +17,15 @@ const getWhatIfFactors = (get_controls) => {
 
 const getCurrentFactors = (get_controls) => {
 	returnList = [];
-	irfList.forEach( row => {
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 		returnList.push({label: row.label, val : parseFloat(row.init), is_control: false});
 	});
 	if(get_controls){
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: parseFloat(row.init), is_control: true});
 		});
 	} else {
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: 0, is_control: true});
 		});
 	}
@@ -34,15 +34,15 @@ const getCurrentFactors = (get_controls) => {
 
 const getLastMonthFactors = (get_controls) => {
 	returnList = [];
-	irfList.forEach( row => {
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 		returnList.push({label: row.label, val : parseFloat(row.last_month), is_control: false});
 	});
 	if(get_controls){
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: parseFloat(row.last_month), is_control: true});
 		});
 	} else {
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: 0, is_control: true});
 		});
 	}
@@ -51,15 +51,15 @@ const getLastMonthFactors = (get_controls) => {
 
 const getLastYearFactors = (get_controls) => {
 	returnList = [];
-	irfList.forEach( row => {
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 		returnList.push({label: row.label, val : parseFloat(row.last_year), is_control: false});
 	});
 	if(get_controls){
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: parseFloat(row.last_year), is_control: true});
 		});
 	} else {
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: 0, is_control: true});
 		});
 	}
@@ -68,15 +68,15 @@ const getLastYearFactors = (get_controls) => {
 
 const getPredictedFactors = (get_controls) => {
 	returnList = [];
-	irfList.forEach( row => {
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 		returnList.push({label: row.label, val : parseFloat(row.predicted), is_control: false});
 	});
 	if(get_controls){
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: parseFloat(row.predicted), is_control: true});
 		});
 	} else {
-		controlList.forEach( row => {
+		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
 			returnList.push({label: row.label, val: 0, is_control: true});
 		});
 	}

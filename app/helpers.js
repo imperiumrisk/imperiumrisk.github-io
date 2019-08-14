@@ -2,7 +2,7 @@ const factorsToProportions = (factors) => {
 	output = [];
 	// First we calculate inherent risk
 	ir_severity = 0;
-	weightings.severity.forEach( row => {
+	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
 		if(row.label == "Background Risk") {
 			ir_severity += row.weight
 		} else {
@@ -15,15 +15,15 @@ const factorsToProportions = (factors) => {
 	// Next residual risk
 	// We actuall do the ratings based on their maximum
 	rr_severity = ir_severity
-	weightings.severity.forEach( row => {
+	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
 		// We don't worry about background risk as it won't be an input factor
-		factor = controlList.find( elem => elem.label == row.label );
+		factor = getControlData(SELECTED_RISK,SELECTED_BU).find( elem => elem.label == row.label );
 		if(factor) {
 			rr_severity += row.weight * factor.max;
 		}
 	})
 	// Now the IRF weightings
-	weightings.severity.forEach( row => {
+	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
 		if(row.label == "Background Risk") {
 			output.push({label: "Background Risk", proportion:  (row.weight/ir_severity)*100.0, is_control: false});
 		} else {
@@ -34,9 +34,9 @@ const factorsToProportions = (factors) => {
 		}
 	});
 	// Now the control weightings
-	weightings.severity.forEach( row => {
+	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
 		// We don't worry about background risk as it won't be an input factor
-		factor = controlList.find( elem => elem.label==row.label );
+		factor = getControlData(SELECTED_RISK,SELECTED_BU).find( elem => elem.label==row.label );
 		factorInList = factors.find(elem => elem.label==row.label );
 		if(factor && factorInList) {
 			bottomProp = ((factor.max*row.weight)/(rr_severity-ir_severity));
@@ -53,7 +53,7 @@ const factorsToProportions = (factors) => {
 
 const getSeverity = (inputs) => {
 	severity = 0;
-	weightings.severity.forEach( row => {
+	getWeightingData(SELECTED_RISK,SELECTED_BU).severity.forEach( row => {
 		if(row.label == "Background Risk") {
 			severity += row.weight
 		} else {
@@ -76,7 +76,7 @@ const poissonPMF = (lambda, k) => {
 
 const getLikelihood = (inputs) => {
 	poisson = 0;
-	weightings.poisson.forEach( row => {
+	getWeightingData(SELECTED_RISK,SELECTED_BU).poisson.forEach( row => {
 		if(row.label == "Background Risk") {
 			poisson += row.weight
 		} else {
@@ -138,7 +138,7 @@ const severityLikelihoodToPlacement = (severity, likelihood) => {
 }
 
 const resetIrfValues = () => {
-	irfList.forEach( factor => {
+	getIRFData(SELECTED_RISK, SELECTED_BU).forEach( factor => {
 		slider = document.getElementById(factor.slider_id);
 		slider.value = factor.init;
 		factor.current = factor.init;
@@ -149,7 +149,7 @@ const resetIrfValues = () => {
 }
 
 const resetControlValues = () => {
-	controlList.forEach( factor => {
+	getControlData(SELECTED_RISK,SELECTED_BU).forEach( factor => {
 		checkbox = document.getElementById(factor.checkbox_id);
 		checkbox.checked = false;
 		factor.current = factor.init;
@@ -157,4 +157,22 @@ const resetControlValues = () => {
 	updateView();
 	// Don't refresh the page
 	return false;
+}
+
+const getProportionTooltip = (label, is_control) => {
+	if(is_control) {
+		control = getControlData(SELECTED_RISK,SELECTED_BU).find(elem => elem.label == label);
+		tooltip = `<span><b>Current:</b> ${control.init.toLocaleString()}</span><br><span><b>What If:</b> ${control.current.toLocaleString()}</span>`;
+	} else {
+		irf = getIRFData(SELECTED_RISK, SELECTED_BU).find(elem => elem.label == label);
+		tooltip = `<span><b>Current:</b> ${irf.init.toLocaleString()}</span><br><span><b>What If:</b> ${irf.current.toLocaleString()}</span>`;
+	}
+	return tooltip;
+}
+
+const getSquareTooltip = (severity, likelihood) => {
+	severity = `£${Math.round(severity).toLocaleString()}`;
+	likelihood = `Every ${likelihood.toFixed(2)} quarters`;
+	tooltip = `<span>${severity}</span><br><span>${likelihood}</span>`;
+	return tooltip;
 }

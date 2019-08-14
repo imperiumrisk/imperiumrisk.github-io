@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<title>Imperium Analytics</title>
+		<title>Imperium Risk Analytics</title>
 		<link rel="stylesheet" href="style.css" type="text/css">
 	</head>
 	<body>
@@ -15,12 +15,8 @@
 							<div class="form-background">
 								<div class="dropdown-group">
 									<label>Risk</label>
-									<select name="risk">
-										<option value="1">Risk 1</option>
-										<option value="2">Risk 2</option>
-										<option value="3">Risk 3</option>
-										<option value="4">Risk 4</option>
-										<option value="5">Risk 5</option>
+									<select name="risk" id="risk_select">
+										<!-- Here JS inputs the risk list -->
 									</select>
 								</div>
 							</div>
@@ -29,12 +25,8 @@
 							<div class="form-background">
 								<div class="dropdown-group">
 									<label>Business Unit</label>
-									<select name="business-unit">
-										<option value="1">Business Unit 1</option>
-										<option value="2">Business Unit 2</option>
-										<option value="3">Business Unit 3</option>
-										<option value="4">Business Unit 4</option>
-										<option value="5">Business Unit 5</option>
+									<select name="business-unit" id="bu_select">
+										<!-- Here JS inputs the risk list -->
 									</select>
 								</div>
 							</div>
@@ -114,6 +106,7 @@
 		</div>
 	</body>
 	<script src="app/data.js"></script>
+	<script src="app/data_retrieval.js"></script>
 	<script src="app/helpers.js"></script>
 	<script src="app/get_factors.js"></script>
 	<script src="app/graphics.js"></script>

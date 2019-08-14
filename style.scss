@@ -96,6 +96,8 @@ body {
 		}
 		.rating_placement {
 			padding: 5px;
+			position: relative;
+
 			border-radius: 3px;
 			&.whatif_square{
 				background-color: var(--imperium-accent);
@@ -112,6 +114,11 @@ body {
 			&.predicted_square{
 				background-color: black;
 			}
+			&:hover .tooltip {
+				visibility: visible;
+				opacity: 1;
+				text-align: center;
+			}
 		}
 	}
 	.rating_title{
@@ -126,7 +133,7 @@ body {
 	grid-area: period_controls; 
 	display: flex;
 	flex-direction: column;
-	justify-content:center;
+	justify-content: start;
 	align-items:stretch;
 	padding: 10px;
 }
@@ -238,6 +245,34 @@ body {
 			width: 23%;
 			margin: 1%;
 		}
+	
+	}
+	.proportion_oblong {
+		position: relative;
+		&:hover .tooltip {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+.tooltip {
+	cursor: default;
+	display: block;
+	position: absolute;
+	left: calc(100% + 5px);
+	top: 5px;
+	padding: 4px;
+	background-color: var(--imperium-back-dark);
+	border-radius: 3px;
+	border: 1px solid var(--imperium-accent);
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity $transition-time;
+	filter: drop-shadow(rgba(255, 255, 255, 0.1) 0 2px 5px);
+	span{
+		white-space: nowrap;
 	}
 }
 
@@ -249,6 +284,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	span{
+		cursor: default;
 		text-align: center;
 	}
 }

@@ -7,8 +7,9 @@ const removeOldSquares = () => {
 	});
 }
 
-const addSquare = (placement, squareClass, squareID, text) => {
-	document.getElementById("rating_square_"+placement).innerHTML += `<div class='rating_placement ${squareClass}' id='${squareID}'>${text}</div>`
+const addSquare = (placement, squareClass, squareID, text, tooltip) => {
+	document.getElementById("rating_square_"+placement).innerHTML += `<div class='rating_placement ${squareClass}' id='${squareID}'>${text}<div class='tooltip'>${tooltip}</div></div>`
+	//document.getElementById("rating_square_"+placement).innerHTML += `<div class='rating_placement ${squareClass}' id='${squareID}'>${text}</div>`
 }
 
 const showSquares = (periodName, factorFunction) => {
@@ -16,12 +17,14 @@ const showSquares = (periodName, factorFunction) => {
 	residualSeverity = getSeverity(residualFactors);
 	residualLikelihood = getLikelihood(residualFactors);
 	residualPlacement = severityLikelihoodToPlacement(residualSeverity, residualLikelihood);
-	addSquare(residualPlacement, `${periodName}_square`, `${periodName}_rr_square`, 'RR');
+	residualTooltip = getSquareTooltip(residualSeverity, residualLikelihood);
+	addSquare(residualPlacement, `${periodName}_square`, `${periodName}_rr_square`, 'RR', residualTooltip);
 	inherentFactors = factorFunction(false);
 	inherentSeverity = getSeverity(inherentFactors);
 	inherentLikelihood = getLikelihood(inherentFactors);
 	inherentPlacement = severityLikelihoodToPlacement(inherentSeverity, inherentLikelihood);
-	addSquare(inherentPlacement, `${periodName}_square`, `${periodName}_ir_square`, 'IR');
+	inherentTooltip = getSquareTooltip(inherentSeverity, inherentLikelihood);
+	addSquare(inherentPlacement, `${periodName}_square`, `${periodName}_ir_square`, 'IR', inherentTooltip);
 }
 
 const updateProportions = (factorFunction) => {
@@ -55,6 +58,7 @@ const updateProportions = (factorFunction) => {
 										<div>${Math.round(prop.top_proportion)}</div>
 										<div>${Math.round(prop.bottom_proportion)}</div>
 									</div>
+									<div class="tooltip">${getProportionTooltip(prop.label, true)}</div>
 								</div>`;
 			}
 		} else {
@@ -67,9 +71,15 @@ const updateProportions = (factorFunction) => {
 				} else {
 					propColor = "prop_green";
 				}
+				if(prop.label == "Background Risk") {
+					tooltip = "";
+				} else {
+					tooltip = `<div class="tooltip">${getProportionTooltip(prop.label, false)}</div>`;
+				}
 				irfHTML += `<div class="proportion_oblong">
 								<div class="proportion_label"><span>${prop.label}</span></div>
 								<div class="proportion_int ${propColor}">${Math.round(prop.proportion)}</div>
+								${tooltip}
 							</div>`;
 			}
 		}
@@ -82,7 +92,6 @@ const updateView = () => {
 	removeOldSquares();
 	if(document.getElementById("whatif_checkbox").checked) {
 		showSquares('whatif', getWhatIfFactors);
-		updateProportions(getWhatIfFactors);
 	}
 	if(document.getElementById("current_checkbox").checked) {
 		showSquares('current', getCurrentFactors);
@@ -96,5 +105,6 @@ const updateView = () => {
 	if(document.getElementById("predicted_checkbox").checked) {
 		showSquares('predicted', getPredictedFactors);
 	}
+	updateProportions(getWhatIfFactors);
 }
 
