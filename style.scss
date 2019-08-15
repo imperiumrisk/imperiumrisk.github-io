@@ -248,6 +248,7 @@ body {
 	
 	}
 	.proportion_oblong {
+		border-radius: 4px;
 		position: relative;
 		&:hover .tooltip {
 			visibility: visible;
@@ -262,7 +263,7 @@ body {
 	position: absolute;
 	left: calc(100% + 5px);
 	top: 5px;
-	padding: 4px;
+	padding: 5px;
 	background-color: var(--imperium-back-dark);
 	border-radius: 3px;
 	border: 1px solid var(--imperium-accent);
@@ -270,7 +271,7 @@ body {
 	opacity: 0;
 	visibility: hidden;
 	transition: opacity $transition-time;
-	filter: drop-shadow(rgba(255, 255, 255, 0.1) 0 2px 5px);
+	filter: drop-shadow(rgba(230, 230, 230, 0.1) 0 2px 5px);
 	span{
 		white-space: nowrap;
 	}
@@ -295,6 +296,7 @@ body {
 	align-items: center;
 	height: 100%;
 	width: 20%;
+	border-radius: 0 4px 4px 0;
 	&.prop_green{
 		background-color: var(--imperium-green);
 	}
@@ -342,6 +344,9 @@ body {
 				border-right: 1px solid white;
 			}
 		}
+	}
+	.proportion_frac, .proportion_int {
+		border-radius: 0 0 4px 4px;
 	}
 }
 
