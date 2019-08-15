@@ -77,13 +77,21 @@ html, body {
 			}
 		}
 	}
-	.nav-slider{
+	.nav_slider{
 		position: absolute;
 		top:0;
 		right: 0;
-		width: 3px;
+		width: 0px;
 		height: 50px;
 		background-color: var(--imperium-accent);
+		-webkit-box-shadow: 2px 4px 7px 1px rgba(35, 129, 203,0.6);
+		box-shadow: 2px 4px 7px 1px rgba(35, 129, 203,0.6);
+		&.visible{
+			width: 3px;
+		}
+		&.transitions_active{
+			transition: top $transition-time;
+		}
 	}
 }
 
@@ -92,13 +100,6 @@ html, body {
 	padding-top: 5px;
 	width: 96%;
 	padding-left: 2%;
-}
-
-@media only screen and (max-width: 1080px) {
-  .global_container{
-	  width: 96vw;
-	  margin-left: 2vw;
-  }
 }
 
 .main_grid {
