@@ -4,6 +4,17 @@ const returnNavSlider = () => {
 	nav_slider.style.top = selected.offsetTop+"px";
 }
 
+const toggleSidenav = () => {
+	sidenav = document.getElementById("sidenav");
+	if(sidenav.classList.contains("show")) {
+		sidenav.classList.remove("show");
+	} else {
+		sidenav.classList.add("show");
+	}
+}
+
+document.getElementById("sidenav_toggle").addEventListener("click", toggleSidenav);
+
 // Get all the elemnts we need
 nav_slider = document.getElementById("nav_slider");
 // Return the nav slider at the start

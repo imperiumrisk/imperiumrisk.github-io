@@ -32,6 +32,7 @@ html, body {
 	grid-template-areas: "topbar topbar" "sidebar main";
 }
 
+
 .topbar {
 	grid-area: topbar;
 	background-color: var(--imperium-back-dark);
@@ -39,11 +40,35 @@ html, body {
 	box-shadow: 2px 2px 17px 2px rgba(0,0,0,0.6);
 	z-index: 100;
 	.logo_holder{
+		float: left;
 		height: 100%;
 		padding-top: 10px;
 		padding-left: 20px;
 		img {
 			height: 30px;
+		}
+	}
+	.sidenav_toggle {
+		float: left;
+		cursor: pointer;
+		height: 100%;
+		width: 50px;
+		display: none;
+		&:hover {
+			.burger {
+				background-color: var(--imperium-accent);
+			}
+		}
+		.burger{
+			background-color: white;
+			transition: background-color $transition-time;
+			width: 24px;
+			height: 3px;
+			margin-top: 6px;
+			margin-left: 13px;
+			&:first-child {
+				margin-top: 14px
+			}
 		}
 	}
 }
@@ -91,6 +116,41 @@ html, body {
 		}
 		&.transitions_active{
 			transition: top $transition-time;
+		}
+	}
+}
+
+@media only screen and (max-width: 1300px) {
+	.main_layout_grid {
+		display: grid;
+		position: relative;
+		grid-template-columns: 1fr;
+		grid-template-rows: 50px 1fr;
+		grid-template-areas: "topbar" "main";
+		transition: 2s;
+	}
+	.topbar .sidenav_toggle {
+		display: block
+	}
+	.sidenav {
+		grid-area: main;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 0;
+		opacity: 0;
+		transition: width $transition-time, opacity $transition-time;
+		span {
+			display: none;
+		}
+		&.show{
+			span {
+				display: block;
+			}
+			transition: width $transition-time, opacity $transition-time;
+			opacity: 1;
+			width: 200px;
 		}
 	}
 }
@@ -451,6 +511,7 @@ html, body {
 }
 
 button {
+	cursor: pointer;
 	background: var(--imperium-accent);
 	padding: 5px 10px;
 	border: 2px solid var(--imperium-accent);
