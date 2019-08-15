@@ -1,0 +1,41 @@
+---
+---
+.bar_container{
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(220, 220, 220, 0.8);
+}
+
+.bar {
+  background: linear-gradient(#2381cb ,#bbd);
+  opacity: 0.8;
+  width: 4px;
+  margin: 2px;
+  height: 0px;
+  border-radius: 1px;
+  transition: height 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+// big - 25,45,75,100
+
+.bar1.show{
+  height: 5px;
+}
+
+.bar2.show {
+  height: 15px;
+}
+
+.bar3.show {
+  height: 30px;
+}
+
+.bar4.show {
+  height: 45px;
+}
