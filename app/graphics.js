@@ -1,4 +1,4 @@
-5onst removeOldSquares = () => {
+const removeOldSquares = () => {
 	squareIDList.forEach( id => {
 		oldSquare = document.getElementById(id);
 		if(oldSquare) {
