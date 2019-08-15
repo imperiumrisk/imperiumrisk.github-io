@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Imperium Risk Analytics</title>
+		<link rel="stylesheet" href="style.css" type="text/css">
+	</head>
+	<body>
+		<div class="main_layout_grid">
+			<div class="topbar">
+				<div class="logo_holder">
+					<img src="assets/logo.png">
+				</div>
+			</div>
+			<div class="sidenav">
+				<ul id="sidenav_ul">
+					<li><a href="/profile"><span>Profile</span></a></li>
+					<li><a href="/events"><span>Events</span></li></a>
+					<li><a href="/rca"><span>RCA</span></li></a>
+					<li><a href="/analytics"><span>Analytics</span></li></a>
+					<li><a href="/scenarios"><span>Scenarios</span></li></a>
+					<li><a href="/metrics"><span>Metrics</span></li></a>
+					<li><a href="/remediation"><span>Remediation</span></li></a>
+					<li><a href="/issues_and_actions"><span>Issues &amp; Actions</span></li></a>
+					<li><a href="/compliance"><span>Compliance</span></li></a>
+					<li><a href="/control_analytics"><span>Control Analytics</span></li></a>
+				</ul>
+				<div class="nav-slider"></div>
+			</div>
+			<div class="global_container">
+				<div class="main_grid">
+					<div class="placement_area">
+						<div class="riskbu_selector">
+							<form id="risk_form">
+								<div class="form-background">
+									<div class="dropdown-group">
+										<label>Risk</label>
+										<select name="risk" id="risk_select">
+											<!-- Here JS inputs the risk list -->
+										</select>
+									</div>
+								</div>
+							</form>
+							<form id="bu_form">
+								<div class="form-background">
+									<div class="dropdown-group">
+										<label>Business Unit</label>
+										<select name="business-unit" id="bu_select">
+											<!-- Here JS inputs the risk list -->
+										</select>
+									</div>
+								</div>
+							</form>
+							<div class="form-background flex-middle">
+								<button onclick="location.href='/events.html'">Events</button>
+								<button onclick="location.href='/projects.html'">Projects</button>
+								<button onclick="location.href='/cost.html'">Cost</button>
+							</div>
+						</div>
+						<div class="rating_grid" id="rating_grid">
+							<div class="rating_title">Yearly</div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div>
+							<div class="rating_title">1-3 Years</div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div>
+							<div class="rating_title">3-10 Years</div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div>
+							<div class="rating_title">10-20 Years</div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div>
+							<div class="rating_title">20+ Years</div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div><div class="rating_square"></div>
+							<div class="rating_title"></div><div class="rating_title"><200k</div><div class="rating_title"><1M</div><div class="rating_title"><5M</div><div class="rating_title"><50M</div><div class="rating_title">+50M</div>
+						</div>
+					</div>
+					<div class="period_controls">
+						<div class="form-background">
+							<form id="period_form">
+								<h4>Period</h4>
+								<div class="check-group">
+									<input type="checkbox" name="current" id="current_checkbox" checked>
+									<label for="current">Current</label>
+								</div>
+								<div class="check-group">
+									<input type="checkbox" name="last_month" id="last_month_checkbox">
+									<label for="last_month">Last Month</label>
+								</div>
+								<div class="check-group">
+									<input type="checkbox" name="last_year" id="last_year_checkbox">
+									<label for="last_year">Last Year</label>
+								</div>
+								<div class="check-group">
+									<input type="checkbox" name="predicted" id="predicted_checkbox">
+									<label for="predicted">Predicted</label>
+								</div>
+								<div class="check-group">
+									<input type="checkbox" name="whatif" id="whatif_checkbox" checked>
+									<label for="whatif">What If</label>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="prop_ratings_area">
+						<div class="scenario_labels">
+							<h4>Scenarios</h4>
+						</div>
+						<div class="irf_proportions_wrapper">
+							<h4>Inherent Risk Factors</h4>
+							<div class="irf_proportions" id="irf_proportions">
+							</div>
+						</div>
+						<div class="control_proportions_wrapper">
+							<h4>Control Environment</h4>
+							<div class="control_proportions" id="control_proportions">
+							</div>
+						</div>
+					</div>
+					<div class="whatif_controls">
+						<form id="whatif_factor_form">
+							<div class="form-background" id="whatif_factor_form_group">
+								<h4>Inherent Risk Factors (What If)</h4>
+								<!-- This is where JS inserts the factors -->
+							</div>
+						</form>
+						<form id="whatif_control_form">
+							<div class="form-background" id="whatif_control_form_group">
+								<h4>Control Remediation (What If)</h4>
+								<!-- This is where JS inserts the factors -->
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="app/analytics/data.js"></script>
+	<script src="app/analytics/data_abstraction.js"></script>
+	<script src="app/analytics/helpers.js"></script>
+	<script src="app/analytics/get_factors.js"></script>
+	<script src="app/analytics/graphics.js"></script>
+	<script src="app/analytics/main.js"></script>
+</html>
