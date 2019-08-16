@@ -36,11 +36,10 @@ const updateProportions = (factorFunction) => {
 	controlHTML = "";
 	// FIrst we sort the two arrays so that most significant factors appear first
 	proportionList.sort( (a, b) => {
-		return b.proportion - a.proportion;
+		return parseFloat(b.proportion) - parseFloat(a.proportion);
 	});
 	controlList.sort( (a, b) => {
-		console.log(b.bottom_proportion - a.bottom_proportion);
-		return b.bottom_proportion - a.bottom_proportion;
+		return parseFloat(b.bottom_proportion) - parseFloat(a.bottom_proportion);
 	});
 	// First we find the maximum rated IRF for colouring
 	max = 0
