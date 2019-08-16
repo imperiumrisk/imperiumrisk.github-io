@@ -39,6 +39,7 @@ const updateProportions = (factorFunction) => {
 		return b.proportion - a.proportion;
 	});
 	controlList.sort( (a, b) => {
+		console.log(b.bottom_proportion - a.bottom_proportion);
 		return b.bottom_proportion - a.bottom_proportion;
 	});
 	// First we find the maximum rated IRF for colouring
