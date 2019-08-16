@@ -204,7 +204,6 @@ html, body {
 	grid-gap:5px;
 	padding: 10px;
 	.rating_square {
-		background-color: var(--imperium-back-dark);
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
@@ -222,21 +221,6 @@ html, body {
 			position: relative;
 
 			border-radius: 3px;
-			&.whatif_square{
-				background-color: var(--imperium-accent);
-			}
-			&.current_square{
-				background-color: var(--imperium-dark-grey);
-			}
-			&.last_month_square{
-				background-color: #9932CC;
-			}
-			&.last_year_square{
-				background-color: #8B4513;
-			}
-			&.predicted_square{
-				background-color: #16835f;
-			}
 			&:hover .tooltip {
 				visibility: visible;
 				opacity: 1;
@@ -250,6 +234,28 @@ html, body {
 		align-items: center;
 		text-align: center;
 	}
+}
+
+.colour_key_square {
+	display: inline-block;
+	height: 1em;
+	width: 1em;
+	border-radius: 3px;
+}
+.whatif_square{
+	background-color: var(--imperium-accent);
+}
+.current_square{
+	background-color: var(--imperium-dark-grey);
+}
+.last_month_square{
+	background-color: #9932CC;
+}
+.last_year_square{
+	background-color: #8B4513;
+}
+.predicted_square{
+	background-color: #16835f;
 }
 
 .period_controls {
