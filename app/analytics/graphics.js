@@ -43,47 +43,52 @@ const updateProportions = (factorFunction) => {
 	});
 	proportionList.forEach( prop => {
 		if(prop.is_control){
+			// If the factor is 0 in the model then display in grey
 			if(!prop.bottom_proportion==0){
 				fraction = prop.top_proportion/prop.bottom_proportion;
-				if(prop.bottom_proportion<5) {
-					propColor = "prop_grey";
-				} else if(fraction >= 0.9){
-					propColor = "prop_green";
-				} else if (fraction >= 0.5) {
-					propColor = "prop_amber";
-				} else {
-					propColor = "prop_red";
-				}
-				controlHTML += `<div class="proportion_oblong">
-									<div class="proportion_label"><span>${prop.label}<span></div>
-									<div class="proportion_frac ${propColor}">
-										<div>${Math.round(prop.top_proportion)}</div>
-										<div>${Math.round(prop.bottom_proportion)}</div>
-									</div>
-									<div class="tooltip">${getProportionTooltip(prop.label, true)}</div>
-								</div>`;
+			} else {
+				fraction = 0;
 			}
-		} else {
-			if(!prop.proportion==0) {
-				fraction = prop.proportion / max;
-				if(fraction >= 0.7){
-					propColor = "prop_red";
-				} else if (fraction >= 0.4) {
-					propColor = "prop_amber";
-				} else {
-					propColor = "prop_green";
-				}
-				if(prop.label == "Background Risk") {
-					tooltip = "";
-				} else {
-					tooltip = `<div class="tooltip">${getProportionTooltip(prop.label, false)}</div>`;
-				}
-				irfHTML += `<div class="proportion_oblong">
-								<div class="proportion_label"><span>${prop.label}</span></div>
-								<div class="proportion_int ${propColor}">${Math.round(prop.proportion)}</div>
-								${tooltip}
+			//  Get the right colour class based on the fraction
+			if(prop.bottom_proportion<5) {
+				propColor = "prop_grey";
+			} else if(fraction >= 0.9){
+				propColor = "prop_green";
+			} else if (fraction >= 0.5) {
+				propColor = "prop_amber";
+			} else {
+				propColor = "prop_red";
+			}
+			controlHTML += `<div class="proportion_oblong">
+								<div class="proportion_label"><span>${prop.label}<span></div>
+								<div class="proportion_frac ${propColor}">
+									<div>${Math.round(prop.top_proportion)}</div>
+									<div>${Math.round(prop.bottom_proportion)}</div>
+								</div>
+								<div class="tooltip">${getProportionTooltip(prop.label, true)}</div>
 							</div>`;
+		} else {
+			fraction = prop.proportion / max;
+			// If factor is insignificant then colour in grey
+			if (prop.proportion==0) {
+				propColor = "prop_grey";
+			} else if(fraction >= 0.7){
+				propColor = "prop_red";
+			} else if (fraction >= 0.4) {
+				propColor = "prop_amber";
+			} else {
+				propColor = "prop_green";
 			}
+			if(prop.label == "Background Risk") {
+				tooltip = "";
+			} else {
+				tooltip = `<div class="tooltip">${getProportionTooltip(prop.label, false)}</div>`;
+			}
+			irfHTML += `<div class="proportion_oblong">
+							<div class="proportion_label"><span>${prop.label}</span></div>
+							<div class="proportion_int ${propColor}">${Math.round(prop.proportion)}</div>
+							${tooltip}
+						</div>`;
 		}
 	})
 	irfPropHolder.innerHTML = irfHTML;
