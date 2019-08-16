@@ -204,6 +204,7 @@ html, body {
 	grid-gap:5px;
 	padding: 10px;
 	.rating_square {
+		background-color: var(--imperium-back-dark);
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
