@@ -45,7 +45,9 @@ const updateProportions = (factorFunction) => {
 		if(prop.is_control){
 			if(!prop.bottom_proportion==0){
 				fraction = prop.top_proportion/prop.bottom_proportion;
-				if(fraction >= 0.9){
+				if(prop.bottom_proportion<5) {
+					propColor = "prop_grey";
+				} else if(fraction >= 0.9){
 					propColor = "prop_green";
 				} else if (fraction >= 0.5) {
 					propColor = "prop_amber";
