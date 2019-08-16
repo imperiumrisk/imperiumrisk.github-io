@@ -229,13 +229,13 @@ html, body {
 				background-color: var(--imperium-dark-grey);
 			}
 			&.last_month_square{
-				background-color: red;
+				background-color: #9932CC;
 			}
 			&.last_year_square{
-				background-color: green;
+				background-color: #FFDEAD;
 			}
 			&.predicted_square{
-				background-color: black;
+				background-color: #66CDAA;
 			}
 			&:hover .tooltip {
 				visibility: visible;
