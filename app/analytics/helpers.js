@@ -168,10 +168,18 @@ const resetControlValues = () => {
 const getProportionTooltip = (label, is_control) => {
 	if(is_control) {
 		control = getControlData(SELECTED_RISK,SELECTED_BU).find(elem => elem.label == label);
-		tooltip = `<span><b>Current:</b> ${control.init.toLocaleString()}</span><br><span><b>What If:</b> ${control.current.toLocaleString()}</span>`;
+		tooltip = `<span><b>Current:</b> ${control.init.toLocaleString()}</span><br>
+			<span><b>What If:</b> ${control.current.toLocaleString()}</span><br>
+			<span><b>Last Month:</b> ${control.last_month.toLocaleString()}</span><br>
+			<span><b>Last Year:</b> ${control.last_year.toLocaleString()}</span><br>
+			<span><b>Predicted:</b> ${control.predicted.toLocaleString()}</span><br>`;
 	} else {
 		irf = getIRFData(SELECTED_RISK, SELECTED_BU).find(elem => elem.label == label);
-		tooltip = `<span><b>Current:</b> ${irf.init.toLocaleString()}</span><br><span><b>What If:</b> ${irf.current.toLocaleString()}</span>`;
+		tooltip = `<span><b>Current:</b> ${irf.init.toLocaleString()}</span><br>
+			<span><b>What If:</b> ${irf.current.toLocaleString()}</span><br>
+			<span><b>Last Month:</b> ${irf.last_month.toLocaleString()}</span><br>
+			<span><b>Last Year:</b> ${irf.last_year.toLocaleString()}</span><br>
+			<span><b>Predicted:</b> ${irf.predicted.toLocaleString()}</span><br>`;
 	}
 	return tooltip;
 }
