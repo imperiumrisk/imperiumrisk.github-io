@@ -163,7 +163,7 @@ html, body {
 	padding-top: 5px;
 	width: 96%;
 	padding-left: 2%;
-	min-height: calc(100vh - $topbar-height);
+	min-height: calc(100vh - #{$topbar-height});
 }
 
 .tableau_container {
