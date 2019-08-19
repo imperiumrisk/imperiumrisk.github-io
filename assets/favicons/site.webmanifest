@@ -1,0 +1,15 @@
+{
+    "name": "Imperium Risk",
+    "short_name": "Imperium Risk",
+    "icons": [
+        {
+            "src": "android-chrome-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#2f3242",
+    "background_color": "#2f3242",
+    "start_url": "https://tomchaplin.github.io/imperium-risk-analytics/profile",
+    "display": "standalone"
+}
