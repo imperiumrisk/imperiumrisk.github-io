@@ -165,6 +165,14 @@ html, body {
 	padding-left: 2%;
 }
 
+.tableau_container {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
 .main_grid {
 	display: grid;
 	grid-template-columns: 4fr 1fr;
