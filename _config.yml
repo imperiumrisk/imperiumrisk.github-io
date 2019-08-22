@@ -1,0 +1,7 @@
+sass:
+    style: compressed
+
+markdown: kramdown
+
+kramdown:
+ input: markdown
