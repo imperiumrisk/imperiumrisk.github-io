@@ -13,6 +13,7 @@ $sidenav-leftpad: 20px;
 	--imperium-accent: #2381cb;
 	--imperium-fore: white;
 	--imperium-dark-grey: #555;
+	--imperium-mid-grey: #777;
 	--imperium-light-grey: #ddd;
 	--imperium-green: #338822;
 	--imperium-amber: #d6ae40;
@@ -98,7 +99,7 @@ html, body {
 				background-color: var(--imperium-accent);
 			}
 			&:hover{
-				background-color: var(--imperium-dark-grey);
+				background-color: var(--imperium-mid-grey);
 			}
 			a {
 				display: flex;
