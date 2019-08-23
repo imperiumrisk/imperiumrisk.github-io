@@ -93,6 +93,13 @@ html, body {
 			height: $navitem-height;
 			width: 100%;
 			padding: 0;
+			transition: background-color $transition-time;
+			&#selected_nav {
+				background-color: var(--imperium-accent);
+			}
+			&:hover{
+				background-color: var(--imperium-dark-grey);
+			}
 			a {
 				display: flex;
 				align-items: center;
