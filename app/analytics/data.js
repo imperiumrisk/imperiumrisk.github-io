@@ -32,7 +32,7 @@ const irfList = [
 	{
 		risk_id: 1,
 		data: [
-			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOut", min:0.1,  max:1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.4, last_year: 0.4, predicted: 0.7},
+			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOut", min:0.1,  max:1, step: 0.1, init: 0.9, current: 0.9, last_month: 0.4, last_year: 0.4, predicted: 0.7},
 			{label: "Clients", slider_id: "clientsSlider", output_id: "clientsOut", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
 			{label: "Product Complexity (1)", slider_id: "prodComp1Slider", output_id: "prodComp1Out", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.2},
 			{label: "Revenes with Watch List Countries", slider_id: "revenuesSlider", output_id: "revenuesOut", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.5},
@@ -406,7 +406,7 @@ const weightings = [
 		data: {
 			severity: [
 				{label: "Background Risk", weight: 7.1},
-				{label: "Regional Complexity", weight: 2.5},
+				{label: "Regional Complexity", weight: 3.5},
 				{label: "Clients", weight: 1.3},
 				{label: "Product Complexity (1)", weight: 1.7},
 				{label: "Revenes with Watch List Countries", weight: 1.6},
@@ -472,7 +472,7 @@ const weightings = [
 				{label: "Benchmark Segregation Of Duties", weight: -1.4},
 				{label: "Trade Authorisation", weight: 0},
 				{label: "Benchmark Submission Review", weight: 0},
-				{label: "Book Access Controls", weight: 0},
+				{label: "Book Access Controls", weight: -0.4},
 				{label: "Independent Trade Reviews", weight: 0},
 				{label: "Chat Monitoring", weight: 0},
 				{label: "Phishing Training", weight: 0},
