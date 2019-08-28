@@ -23,7 +23,7 @@
 			// Create a viz object and embed it in the container div.
 			var viz = new tableau.Viz(containerDiv, url, options);
 			// Refresh the datasource every 5 minutes
-			setInterval(function () {viz.refreshDataAsync() }, 300000);
+			setInterval(function () {viz.refreshDataAsync() }, 3600000);
 		}
 	</script>
 	<body onload="initViz();">
