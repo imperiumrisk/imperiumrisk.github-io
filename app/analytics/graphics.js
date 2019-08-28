@@ -78,7 +78,6 @@ const updateProportions = (factorFunction) => {
 			} else {
 				propColor = "prop_red";
 			}
-			console.log(prop.type);
 			document.getElementById(prop.type).innerHTML += `<div class="proportion_oblong">
 								<div class="proportion_label"><span>${prop.label}<span></div>
 								<div class="proportion_frac ${propColor}">
