@@ -87,6 +87,10 @@ const getLikelihood = (inputs) => {
 			}
 		}
 	});
+	// If the poisson is negative then we just say every 100 years
+	if(poisson<0) {
+		return 400;
+	}
 	// We now need to turn Poisson into expected time between severe events
 	epsilon = 0.0001;
 	q = 0;

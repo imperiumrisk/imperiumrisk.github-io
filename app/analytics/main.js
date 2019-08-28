@@ -18,17 +18,17 @@ var SELECTED_BU = buSelect.value;
 // TODO: Redraw What If interface on new selection
 riskSelect.addEventListener("change", () => {
 	SELECTED_RISK = riskSelect.value;
+	setupFactors();
 	updateView();
 	resetIrfValues();
 	resetControlValues();
-	setupFactors();
 });
 buSelect.addEventListener("change", () => {
 	SELECTED_BU = buSelect.value;
+	setupFactors();
 	updateView();
 	resetIrfValues();
 	resetControlValues();
-	setupFactors();
 });
 
 // Colour in the grid

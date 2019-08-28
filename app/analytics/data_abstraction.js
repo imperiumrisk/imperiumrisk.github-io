@@ -7,7 +7,7 @@ const getControlData = (risk, bu) => {
 }
 
 const getWeightingData = (risk, bu) => {
-	return weightings;
+	return weightings.find(row => row.risk_id==risk).data;
 }
 
 const getRiskList = () => {
