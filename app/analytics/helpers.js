@@ -64,7 +64,9 @@ const getSeverity = (inputs) => {
 			}
 		}
 	})
-	return Math.exp(severity);
+	severity = Math.exp(severity);
+	severity = severity<0 ? 0 : severity;
+	return severity;
 }
 
 const poissonPMF = (lambda, k) => {
