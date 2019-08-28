@@ -69,7 +69,6 @@ function setupFactors() {
 
 		// Update the current slider value (each time you drag the slider handle)
 		slider.oninput = () => {
-			console.log("Changing value");
 			output.innerHTML = parseFloat(slider.value).toLocaleString();
 			setIrfValue(SELECTED_RISK, SELECTED_BU, row.label, parseFloat(slider.value));
 			updateView();
