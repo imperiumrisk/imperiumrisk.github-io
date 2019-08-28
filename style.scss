@@ -361,7 +361,7 @@ html, body {
 .prop_ratings_area {
 	grid-area: prop_ratings_area; 
 	display:grid;
-	grid-template-columns: 1fr 2fr 4fr;
+	grid-template-columns: 2fr 4fr;
 	.irf_proportions_wrapper, .scenario_labels{
 		border-right: 1px dashed white;
 		h4{
