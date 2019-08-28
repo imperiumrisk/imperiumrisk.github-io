@@ -14,22 +14,6 @@ const buList = [
 
 const irfList = [
 	{
-		risk_id: 3,
-		data: [
-			{label: "Application Complexity", slider_id: "appCompSlider", output_id: "appCompOut", min:0.1,  max:1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.4, last_year: 0.4, predicted: 0.4},
-			{label: "Employees", slider_id: "employees1Slider", output_id: "employees1Out", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
-			{label: "Client Facing Applications", slider_id: "clientFacingAppSlider", output_id: "clientFacingAppOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
-			{label: "Production Changes", slider_id: "productionChangesSlider", output_id: "productionChangesOut", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
-			{label: "Emails from External Parties", slider_id: "externalEmailsSlider", output_id: "externalEmailsOut", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
-			{label: "Employees", slider_id: "emloyees2Slider", output_id: "employees2Out", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
-			{label: "Database Complexity", slider_id: "dbCompSlider", output_id: "dbCompOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
-			{label: "Payments", slider_id: "paymentsSlider", output_id: "paymentsOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
-			{label: "Operations Team", slider_id: "opTeamSlider", output_id: "opTeamOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
-			{label: "Regional Complexity", slider_id: "regComplexSilder", output_id: "regComplexOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
-			{label: "Payment System Complexity", slider_id: "paySysCompSlider", output_id: "paySysCompOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
-		]
-	},
-	{
 		risk_id: 1,
 		data: [
 			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOut", min:0.1,  max:1, step: 0.1, init: 0.9, current: 0.9, last_month: 0.4, last_year: 0.4, predicted: 0.7},
@@ -55,25 +39,26 @@ const irfList = [
 			{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
 			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
 		]
+	},
+	{
+		risk_id: 3,
+		data: [
+			{label: "Application Complexity", slider_id: "appCompSlider", output_id: "appCompOut", min:0.1,  max:1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.4, last_year: 0.4, predicted: 0.4},
+			{label: "Employees", slider_id: "employees1Slider", output_id: "employees1Out", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
+			{label: "Client Facing Applications", slider_id: "clientFacingAppSlider", output_id: "clientFacingAppOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
+			{label: "Production Changes", slider_id: "productionChangesSlider", output_id: "productionChangesOut", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
+			{label: "Emails from External Parties", slider_id: "externalEmailsSlider", output_id: "externalEmailsOut", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
+			{label: "Employees", slider_id: "emloyees2Slider", output_id: "employees2Out", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
+			{label: "Database Complexity", slider_id: "dbCompSlider", output_id: "dbCompOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
+			{label: "Payments", slider_id: "paymentsSlider", output_id: "paymentsOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
+			{label: "Operations Team", slider_id: "opTeamSlider", output_id: "opTeamOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
+			{label: "Regional Complexity", slider_id: "regComplexSilder", output_id: "regComplexOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5},
+			{label: "Payment System Complexity", slider_id: "paySysCompSlider", output_id: "paySysCompOut", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
+		]
 	}
 ]
 
 const controlList = [
-	{
-		risk_id: 2,
-		data: [
-			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6, type:"indirect_preventative"},
-			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7, type: "direct_preventative"},
-			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1, type:"detective"},
-			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0, type:"detective"},
-			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8, type:"corrective"},
-			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5, type:"detective"},
-			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8, type:"direct_preventative"},
-			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0, type:"indirect_preventative"},
-			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1, type:"detective"},
-			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2, type:"corrective"}
-		]
-	},
 	{
 		risk_id: 1,
 		data: [
@@ -381,6 +366,21 @@ const controlList = [
 				scenario: "Customer Data Leak",
 				type:"detective"
 			}
+		]
+	},
+	{
+		risk_id: 2,
+		data: [
+			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6, type:"indirect_preventative"},
+			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7, type: "direct_preventative"},
+			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1, type:"detective"},
+			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0, type:"detective"},
+			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8, type:"corrective"},
+			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5, type:"detective"},
+			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8, type:"direct_preventative"},
+			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0, type:"indirect_preventative"},
+			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1, type:"detective"},
+			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2, type:"corrective"}
 		]
 	},
 	{
