@@ -358,6 +358,26 @@ html, body {
 	}
 }
 
+.control_proportion_names{
+ display: flex;
+ flex-direction: row;
+ border-bottom: 1px dotted white;
+ border-top: 1px dotted white;
+ .name_holder {
+	 border-left: 1px dotted white;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 &:first-child{
+		 border: none;
+	 }
+	 width: 25%;
+	 padding: 0 3%;
+	 text-align: center;
+	 color: var(--imperium-accent);
+ }
+}
+
 .prop_ratings_area {
 	grid-area: prop_ratings_area; 
 	display:grid;
@@ -373,25 +393,6 @@ html, body {
 		h4{
 			margin: 10px 1%;
 			color: var(--imperium-accent);
-		 }
-		 .control_proportion_names{
-			 display: flex;
-			 flex-direction: row;
-			 border-bottom: 1px dotted white;
-			 border-top: 1px dotted white;
-			 .name_holder {
-				 border-left: 1px dotted white;
-				 display: flex;
-				 justify-content: center;
-				 align-items: center;
-				 &:first-child{
-					 border: none;
-				 }
-				 width: 25%;
-				 padding: 0 3%;
-				 text-align: center;
-				 color: var(--imperium-accent);
-			 }
 		 }
 	 }
 	.irf_proportions, .control_proportions {
@@ -420,8 +421,8 @@ html, body {
 				border: none;
 			}
 			.proportion_oblong{
-				width: 94%;
-				margin: 3%;
+				width: 92%;
+				margin: 4%;
 			}
 		}
 	}
