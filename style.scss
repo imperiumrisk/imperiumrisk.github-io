@@ -374,6 +374,25 @@ html, body {
 			margin: 10px 1%;
 			color: var(--imperium-accent);
 		 }
+		 .control_proportion_names{
+			 display: flex;
+			 flex-direction: row;
+			 border-bottom: 1px dotted white;
+			 border-top: 1px dotted white;
+			 .name_holder {
+				 border-left: 1px dotted white;
+				 display: flex;
+				 justify-content: center;
+				 align-items: center;
+				 &:first-child{
+					 border: none;
+				 }
+				 width: 25%;
+				 padding: 0 3%;
+				 text-align: center;
+				 color: var(--imperium-accent);
+			 }
+		 }
 	 }
 	.irf_proportions, .control_proportions {
 		.proportion_oblong{
@@ -390,11 +409,21 @@ html, body {
 		}
 	}
 	.control_proportions {
-		.proportion_oblong{
-			width: 23%;
-			margin: 1%;
+		display:flex;
+		flex-direction: row;
+		.control_column{
+			width: 25%;
+			display: flex;
+			flex-direction: column;
+			border-left: 1px dotted white;
+			&:first-child {
+				border: none;
+			}
+			.proportion_oblong{
+				width: 94%;
+				margin: 3%;
+			}
 		}
-	
 	}
 	.proportion_oblong {
 		border-radius: 4px;

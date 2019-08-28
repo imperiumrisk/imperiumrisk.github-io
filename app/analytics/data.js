@@ -62,16 +62,16 @@ const controlList = [
 	{
 		risk_id: 2,
 		data: [
-			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6},
-			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7},
-			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1},
-			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0},
-			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8},
-			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5},
-			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8},
-			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0},
-			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1},
-			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2}
+			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6, type:"indirect_preventative"},
+			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7, type: "direct_preventative"},
+			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1, type:"detective"},
+			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0, type:"detective"},
+			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8, type:"corrective"},
+			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5, type:"detective"},
+			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8, type:"direct_preventative"},
+			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0, type:"indirect_preventative"},
+			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1, type:"detective"},
+			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2, type:"corrective"}
 		]
 	},
 	{
@@ -386,16 +386,16 @@ const controlList = [
 	{
 		risk_id: 3,
 		data: [
-			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6},
-			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7},
-			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1},
-			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0},
-			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8},
-			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5},
-			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8},
-			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0},
-			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1},
-			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2}
+			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6, type:"indirect_preventative"},
+			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7, type: "direct_preventative"},
+			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1, type:"detective"},
+			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0, type:"detective"},
+			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8, type:"corrective"},
+			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5, type:"detective"},
+			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8, type:"direct_preventative"},
+			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0, type:"indirect_preventative"},
+			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1, type:"detective"},
+			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2, type:"corrective"}
 		]
 	}
 ];

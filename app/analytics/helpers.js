@@ -46,7 +46,7 @@ const factorsToProportions = (factors) => {
 			} else {
 				topProp = (factorInList.val / factor.max)*bottomProp;
 			}
-			output.push({label: row.label, top_proportion: topProp*100.0, bottom_proportion: bottomProp*100.0, is_control: true});
+			output.push({label: row.label, top_proportion: topProp*100.0, bottom_proportion: bottomProp*100.0, is_control: true, type: factor.type});
 		}
 	});
 	return output;

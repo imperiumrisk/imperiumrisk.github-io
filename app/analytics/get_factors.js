@@ -5,11 +5,11 @@ const getWhatIfFactors = (get_controls) => {
 	});
 	if(get_controls){
 		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
-			returnList.push({label: row.label, val: parseFloat(row.current), is_control: true});
+			returnList.push({label: row.label, val: parseFloat(row.current), is_control: true, type: row.type});
 		});
 	} else {
 		getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
-			returnList.push({label: row.label, val: 0, is_control: true});
+			returnList.push({label: row.label, val: 0, is_control: true, type: row.type});
 		});
 	}
 	return returnList;

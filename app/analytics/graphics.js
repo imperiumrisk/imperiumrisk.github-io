@@ -32,6 +32,11 @@ const updateProportions = (factorFunction) => {
 	proportionList = factorsToProportions(allFactors);
 	irfPropHolder = document.getElementById("irf_proportions");
 	controlPropHolder = document.getElementById("control_proportions");
+	// Clear control proportions
+	document.getElementById("direct_preventative").innerHTML = "";
+	document.getElementById("indirect_preventative").innerHTML = "";
+	document.getElementById("corrective").innerHTML = "";
+	document.getElementById("detective").innerHTML = "";
 	irfHTML = "";
 	controlHTML = "";
 	// FIrst we sort the two arrays so that most significant factors appear first
@@ -73,7 +78,8 @@ const updateProportions = (factorFunction) => {
 			} else {
 				propColor = "prop_red";
 			}
-			controlHTML += `<div class="proportion_oblong">
+			console.log(prop.type);
+			document.getElementById(prop.type).innerHTML += `<div class="proportion_oblong">
 								<div class="proportion_label"><span>${prop.label}<span></div>
 								<div class="proportion_frac ${propColor}">
 									<div>${Math.round(prop.top_proportion)}</div>
@@ -106,7 +112,7 @@ const updateProportions = (factorFunction) => {
 		}
 	})
 	irfPropHolder.innerHTML = irfHTML;
-	controlPropHolder.innerHTML = controlHTML;
+	//controlPropHolder.innerHTML = controlHTML;
 }
 
 const updateView = () => {
