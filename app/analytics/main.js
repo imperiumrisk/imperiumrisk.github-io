@@ -21,12 +21,14 @@ riskSelect.addEventListener("change", () => {
 	updateView();
 	resetIrfValues();
 	resetControlValues();
+	setupFactors();
 });
 buSelect.addEventListener("change", () => {
 	SELECTED_BU = buSelect.value;
 	updateView();
 	resetIrfValues();
 	resetControlValues();
+	setupFactors();
 });
 
 // Colour in the grid
@@ -40,64 +42,66 @@ gridChildren.forEach( square => {
 	}
 });
 
-
-// Add Inherent Risk Factor (What If) HTML
-irfWhatIfHTML = "";
-getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
-	irfWhatIfHTML +=  `<div class='slider-group'>
-						<label>${row.label}</label>
-						<div class='slider-value' id='${row.output_id}'>
-							${row.init}
-						</div>
-						<div class='slidecontainer'>
-							<input type='range' min='${row.min}' max='${row.max}' value='${row.init}' step='${row.step}' class='slider' id='${row.slider_id}'>
-						</div>
-					</div>`
-});
-// Now we add the reset button
-irfResetButton = "<div class='button_wrapper'><button id='irf_reset_button' onclick='resetIrfValues()' type='button'>Reset</button></div>";
-irfWhatIfHTML += irfResetButton;
-document.getElementById("whatif_factor_form_group").innerHTML += irfWhatIfHTML;
-
-// Add event listeners so that output of sliders updates
-getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
-	var slider = document.getElementById(row.slider_id);
-	var output = document.getElementById(row.output_id);
-	output.innerHTML = parseFloat(slider.value).toLocaleString(); // Display the default slider value
-
-	// Update the current slider value (each time you drag the slider handle)
-	slider.oninput = () => {
-		output.innerHTML = parseFloat(slider.value).toLocaleString();
-		setIrfValue(row.label, parseFloat(slider.value));
-		updateView();
-	}
-});
-
-// Add control factor What If HTML
-controlWhatIfHTML = ""
-getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
-	controlWhatIfHTML += `<div class='check-group'>
-								<input type='checkbox' name='${row.checkbox_id}' id='${row.checkbox_id}'>
-								<label for='current'>${row.label}</label>
-						  </div>`
-});
-controlResetButton = "<div class='button_wrapper'><button id='control_reset_button' onclick='resetControlValues()' type='button'>Reset</button></div>";
-controlWhatIfHTML += controlResetButton;
-document.getElementById("whatif_control_form_group").innerHTML += controlWhatIfHTML;
-
-// Add event listeners for control fixes
-getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
-	var check = document.getElementById(row.checkbox_id);
-	check.addEventListener("change", () => {
-		if (check.checked) {
-			setControlValue(row.label,row.max);
-		} else {
-			setControlValue(row.label,row.init);
-		}
-		updateView();
+function setupFactors() {
+	// Add Inherent Risk Factor (What If) HTML
+	irfWhatIfHTML = "";
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
+		irfWhatIfHTML +=  `<div class='slider-group'>
+							<label>${row.label}</label>
+							<div class='slider-value' id='${row.output_id}'>
+								${row.init}
+							</div>
+							<div class='slidecontainer'>
+								<input type='range' min='${row.min}' max='${row.max}' value='${row.init}' step='${row.step}' class='slider' id='${row.slider_id}'>
+							</div>
+						</div>`
 	});
-});
+	// Now we add the reset button
+	irfResetButton = "<div class='button_wrapper'><button id='irf_reset_button' onclick='resetIrfValues()' type='button'>Reset</button></div>";
+	irfWhatIfHTML += irfResetButton;
+	document.getElementById("whatif_factor_form_group").innerHTML = irfWhatIfHTML;
 
+	// Add event listeners so that output of sliders updates
+	getIRFData(SELECTED_RISK,SELECTED_BU).forEach( row => {
+		var slider = document.getElementById(row.slider_id);
+		var output = document.getElementById(row.output_id);
+		output.innerHTML = parseFloat(slider.value).toLocaleString(); // Display the default slider value
+
+		// Update the current slider value (each time you drag the slider handle)
+		slider.oninput = () => {
+			console.log("Changing value");
+			output.innerHTML = parseFloat(slider.value).toLocaleString();
+			setIrfValue(SELECTED_RISK, SELECTED_BU, row.label, parseFloat(slider.value));
+			updateView();
+		}
+	});
+
+	// Add control factor What If HTML
+	controlWhatIfHTML = ""
+	getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
+		controlWhatIfHTML += `<div class='check-group'>
+									<input type='checkbox' name='${row.checkbox_id}' id='${row.checkbox_id}'>
+									<label for='current'>${row.label}</label>
+							  </div>`
+	});
+	controlResetButton = "<div class='button_wrapper'><button id='control_reset_button' onclick='resetControlValues()' type='button'>Reset</button></div>";
+	controlWhatIfHTML += controlResetButton;
+	document.getElementById("whatif_control_form_group").innerHTML = controlWhatIfHTML;
+
+	// Add event listeners for control fixes
+	getControlData(SELECTED_RISK,SELECTED_BU).forEach( row => {
+		var check = document.getElementById(row.checkbox_id);
+		check.addEventListener("change", () => {
+			if (check.checked) {
+				setControlValue(SELECTED_RISK, SELECTED_BU, row.label,row.max);
+			} else {
+				setControlValue(SELECTED_RISK, SELECTED_BU, row.label,row.init);
+			}
+			updateView();
+		});
+	});
+}
+setupFactors();
 
 // Add event listeners for period form
 periodFormIDs.forEach( id => {

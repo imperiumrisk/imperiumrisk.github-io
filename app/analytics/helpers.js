@@ -145,7 +145,7 @@ const resetIrfValues = () => {
 		// Update slider
 		slider.value = factor.init;
 		// Update data source 
-		setIrfValue(factor.label, factor.init);
+		setIrfValue(SELECTED_RISK, SELECTED_BU, factor.label, factor.init);
 		// Update slider output
 		output.innerHTML = parseFloat(factor.init).toLocaleString();
 	})
@@ -158,7 +158,7 @@ const resetControlValues = () => {
 	getControlData(SELECTED_RISK,SELECTED_BU).forEach( factor => {
 		checkbox = document.getElementById(factor.checkbox_id);
 		checkbox.checked = false;
-		setControlValue(factor.label, factor.init);
+		setControlValue(SELECTED_RISK, SELECTED_BU, factor.label, factor.init);
 	})
 	updateView();
 	// Don't refresh the page

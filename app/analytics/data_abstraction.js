@@ -1,9 +1,9 @@
 const getIRFData = (risk, bu) => {
-	return irfList;
+	return irfList.find(row=>row.risk_id==risk).data;
 }
 
 const getControlData = (risk, bu) => {
-	return controlList;
+	return controlList.find(row=>row.risk_id==risk).data;
 }
 
 const getWeightingData = (risk, bu) => {
@@ -18,16 +18,16 @@ const getBuList = () => {
 	return buList;
 }
 
-const setIrfValue = (label, value) => {
-	irfList.forEach( row => {
+const setIrfValue = (risk, bu, label, value) => {
+	irfList.find(row => row.risk_id==risk).data.forEach( row => {
 		if(row.label == label) {
 			row.current = value;
 		}
 	});
 }
 
-const setControlValue = (label, value) => {
-	controlList.forEach( row => {
+const setControlValue = (risk, bu, label, value) => {
+	controlList.find(row => row.risk_id==risk).data.forEach( row => {
 		if(row.label == label) {
 			row.current = value;
 		}

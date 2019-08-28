@@ -1,11 +1,7 @@
 const riskList = [
-	{id: 1, title: "Cyber Crime"},
+	{id: 1, title: "Cyber Risk"},
 	{id: 2, title: "Financial Crime"},
-	{id: 3, title: "Risk 1"},
-	{id: 4, title: "Risk 2"},
-	{id: 5, title: "Risk 3"},
-	{id: 6, title: "Risk 4"},
-	{id: 7, title: "Risk 5"}
+	{id: 3, title: "Reporting Failure"},
 ]
 
 const buList = [
@@ -17,26 +13,88 @@ const buList = [
 ]
 
 const irfList = [
-	{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 750000, max: 2000000, step: 1000, init: 1200000, current: 1200000, last_month: 1000000, last_year: 750000, predicted: 1800000},
-	{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
-	{label: "IT Complexity", slider_id: "itComplexitySlider", output_id: "itComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
-	{label: "F2B Complexity", slider_id: "f2bComplexitySlider", output_id: "f2bComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
-	{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
-	{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
-];
+	{
+		risk_id: 1,
+		data: [
+			{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 750000, max: 2000000, step: 1000, init: 1200000, current: 1200000, last_month: 1000000, last_year: 750000, predicted: 1800000},
+			{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
+			{label: "IT Complexity", slider_id: "itComplexitySlider", output_id: "itComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
+			{label: "F2B Complexity", slider_id: "f2bComplexitySlider", output_id: "f2bComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
+			{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
+			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
+		]
+	},
+	{
+		risk_id: 2,
+		data: [
+			{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 750000, max: 2000000, step: 1000, init: 1200000, current: 1200000, last_month: 1000000, last_year: 750000, predicted: 1800000},
+			{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
+			{label: "IT Complexity", slider_id: "itComplexitySlider", output_id: "itComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
+			{label: "F2B Complexity", slider_id: "f2bComplexitySlider", output_id: "f2bComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
+			{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
+			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
+		]
+	},
+	{
+		risk_id: 3,
+		data: [
+			{label: "Trade Count", slider_id: "tradeCountSlider", output_id: "tradeCountOutput", min: 750000, max: 2000000, step: 1000, init: 1200000, current: 1200000, last_month: 1000000, last_year: 750000, predicted: 1800000},
+			{label: "Trade Notional", slider_id: "tradeNotionalSlider", output_id: "tradeNotionalOutput", min: 0.1, max: 1, step: 0.1, init: 0.6, current: 0.6, last_month: 0.6, last_year: 0.6, predicted: 0.5},
+			{label: "IT Complexity", slider_id: "itComplexitySlider", output_id: "itComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.4, last_year:0.4, predicted: 0.8},
+			{label: "F2B Complexity", slider_id: "f2bComplexitySlider", output_id: "f2bComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.4, current: 0.4, last_month: 0.2, last_year: 0.2, predicted: 0.8},
+			{label: "Product Complexity", slider_id: "productComplexitySlider", output_id: "productComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.3, current: 0.3, last_month: 0.5, last_year: 0.5, predicted: 1},
+			{label: "Regional Complexity", slider_id: "regionalComplexitySlider", output_id: "regionalComplexityOutput", min: 0.1, max: 1, step: 0.1, init: 0.5, current: 0.5, last_month: 0.5, last_year: 0.5, predicted: 0.5}
+		]
+	}
+]
 
 const controlList = [
-	{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6},
-	{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7},
-	{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1},
-	{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0},
-	{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8},
-	{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5},
-	{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8},
-	{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0},
-	{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1},
-	{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2}
-]
+	{
+		risk_id: 1,
+		data: [
+			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6},
+			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7},
+			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1},
+			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0},
+			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8},
+			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5},
+			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8},
+			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0},
+			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1},
+			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2}
+		]
+	},
+	{
+		risk_id: 2,
+		data: [
+			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6},
+			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7},
+			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1},
+			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0},
+			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8},
+			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5},
+			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8},
+			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0},
+			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1},
+			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2}
+		]
+	},
+	{
+		risk_id: 3,
+		data: [
+			{label: "MiFiD Training", checkbox_id: "fixMifidTraining", current: 0.6, init: 0.6, max: 1, last_month: 0.6, last_year: 0, predicted: 0.6},
+			{label: "MiFiD Rule Verification", checkbox_id: "fixMifidRuleVerification", current: 0.6 , init: 0.6, max: 1, last_month: 0.6, last_year: 0.6, predicted:0.7},
+			{label: "External Oversight", checkbox_id: "fixExternalOversight", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 1},
+			{label: "EOD Monitoring", checkbox_id: "fixEodMonitoring", current: 0, init: 0, max: 1, last_month: 0, last_year:1, predicted: 0},
+			{label: "Control 5", checkbox_id: "fixControl5", current: 0.4, init: 0.4, max: 1, last_month: 0.3, last_year: 0, predicted: 0.8},
+			{label: "Control 6", checkbox_id: "fixControl6", current: 0.2, init: 0.2, max: 1, last_month: 0, last_year: 0, predicted: 0.5},
+			{label: "Control 7", checkbox_id: "fixControl7", current: 0.8, init: 0.8, max: 1, last_month: 0.7, last_year: 0.6, predicted: 0.8},
+			{label: "Control 8", checkbox_id: "fixControl8", current: 0.1, init: 0.1, max: 1, last_month: 0, last_year: 0, predicted: 0},
+			{label: "Control 9", checkbox_id: "fixControl9", current: 0, init: 0, max: 1, last_month: 0, last_year: 0, predicted: 0.1},
+			{label: "Control 10", checkbox_id: "fixControl10", current: 0.3, init: 0.3, max: 1, last_month: 0.8, last_year: 0.8, predicted: 0.2}
+		]
+	}
+];
 
 const weightings = {
 	severity:[
