@@ -1,9 +1,11 @@
 const riskList = [
-	{id: 1, title: "Risk 1"},
-	{id: 2, title: "Risk 2"},
-	{id: 3, title: "Risk 3"},
-	{id: 4, title: "Risk 4"},
-	{id: 5, title: "Risk 5"}
+	{id: 1, title: "Cyber Crime"},
+	{id: 2, title: "Financial Crime"},
+	{id: 3, title: "Risk 1"},
+	{id: 4, title: "Risk 2"},
+	{id: 5, title: "Risk 3"},
+	{id: 6, title: "Risk 4"},
+	{id: 7, title: "Risk 5"}
 ]
 
 const buList = [
