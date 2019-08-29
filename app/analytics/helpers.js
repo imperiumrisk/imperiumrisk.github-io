@@ -3,9 +3,12 @@ const factorsToProportions = (factors) => {
 	// First we calculate inherent risk
 	weight_data = getWeightingData(SELECTED_RISK, SELECTED_BU);
 	ir_severity = 0;
+	background_severity = 0;
 	weight_data.severity.forEach( row => {
 		if(row.label == "Background Risk") {
-			ir_severity += row.weight
+			ir_severity += row.weight;
+			// We save background severity for later
+			background_severity = row.weight;
 		} else {
 			factor = factors.find( elem => elem.label==row.label )
 			if(factor && !factor.is_control) {
@@ -26,11 +29,14 @@ const factorsToProportions = (factors) => {
 	// Now the IRF weightings
 	weight_data.severity.forEach( row => {
 		if(row.label == "Background Risk") {
-			output.push({label: "Background Risk", proportion:  (row.weight/ir_severity)*100.0, is_control: false});
+			//output.push({label: "Background Risk", proportion:  (row.weight/ir_severity)*100.0, is_control: false});
+			// We don't want a background risk label
+			return
 		} else {
 			factor = factors.find( elem => elem.label==row.label );
 			if(factor && !factor.is_control) {
-				output.push({label: row.label, proportion: ((factor.val*row.weight)/ir_severity)*100.0, is_control: false});
+				// What proportion does this element contribute to the non-background risk
+				output.push({label: row.label, proportion: ((factor.val*row.weight)/(ir_severity-background_severity))*100.0, is_control: false});
 			}
 		}
 	});
