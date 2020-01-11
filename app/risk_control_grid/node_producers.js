@@ -113,12 +113,28 @@ const centralNodeProducer = (links, row_data, column_data, rowNodes, columnNodes
 				rowIDs = [row_node.id];
 			}
 			// Aggregate links 
+			applicabilityCount = 0;
 			count = 0;
+			control_rating = 0;
+			KCI = 0;
 			links.forEach(link => {
 				if(rowIDs.includes(link[0]) && columnIDs.includes(link[1]) ){
 					count++;
+					control_rating += link[2].control_rating;
+					KCI += link[2].KCI;
+					if(link[2].applicability) {
+						applicabilityCount++;
+					}
 				}
 			})
+			// Average relavent values
+			control_rating = control_rating / count;
+			KCI = KCI / count;
+			values = {
+				applicability: applicabilityCount,
+				control_rating: control_rating,
+				KCI: KCI
+			}
 			outputNodes.push({
 				x0: column_node.x0,
 				x1: column_node.x1,
@@ -129,7 +145,7 @@ const centralNodeProducer = (links, row_data, column_data, rowNodes, columnNodes
 				rowTree: row_node.rowTree,
 				columnTree: column_node.columnTree,
 				depth: column_node.columnTree.length + row_node.rowTree.length,
-				value: count,
+				values: values,
 				children: row_node.children || column_node.children
 			})
 		})

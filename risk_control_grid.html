@@ -8,8 +8,16 @@
 	</head>
 	<body>
 		<div class="full_page">
+			<div class="controls">
+				<select id="dataModeSelector">
+					<option value="applicability">Applicability</option>
+					<option value="control_rating">Control Rating</option>
+					<option value="KCI">KCI</option>
+				</select>
+			</div>
 			<div id="d3_root">
 			</div>
+		</div>
 	</body>
 	<script src="/app/risk_control_grid/data.js"></script>
 	<script src="/app/risk_control_grid/zoom.js"></script>

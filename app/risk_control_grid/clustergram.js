@@ -12,6 +12,7 @@ let columnTree = [{id: 0, x0: axisPercent, x1: width}];
 constructTreeJSONs();
 let x = d3.scaleLinear().domain([axisPercent, width]).range([axisPercent, width]);
 let y = d3.scaleLinear().domain([axisPercent, height]).range([axisPercent, height]);
+let dataMode = "applicability";
 
 const cornerHTML =
 	`<svg height="100%" width="100%">
@@ -99,17 +100,7 @@ getData().then( data => {
 		.data(centralNodeData)
 		.enter()
 		.append("div")
-		.html(d => {
-			if(!d.children) {
-				if(d.value === 1) {
-					return "&#10004;"
-				} else {
-					return ""
-				}
-			} else {
-				return d.value
-			}
-		})
+		.html(getCentralNodeHTML)
 		.style("top", d => y(d.y0)+"%")
 		.style("height",  d => (y(d.y1) - y(d.y0))+"%")
 		.style("left",  d => x(d.x0)+"%")
@@ -151,3 +142,26 @@ getData().then( data => {
 		.attr("class", d => "node "+getVisibilityClass(d)+" "+getDepthClass(d))
 		.on("click",zoom);
 })
+
+const getCentralNodeHTML = (d) => {
+	if(dataMode==="applicability") {
+		if(!d.children) {
+			if(d.values.applicability === 1) {
+				return "&#10004;"
+			} else {
+				return ""
+			}
+		} else {
+			return d.values.applicability
+		}
+	} else {
+		return d.values[dataMode].toFixed(3);
+	}
+}
+
+// Datamode selector listener
+document.getElementById("dataModeSelector").addEventListener("change", e => {
+	dataMode = e.target.value;
+	// Redraw nodes
+	centralNodes.html(getCentralNodeHTML);
+});
